@@ -110,15 +110,16 @@ public class Match extends Thread implements MatchInterface {
     			}
     			playerTurn.decreaseGuesses();
     			String guess = character.substring(1, character.length()).toUpperCase();
-    			String play = playerTurn.getName() + " deu um palpite de ouro: " + guess + "\n";
-    			matchLog += play;
+    			String play = playerTurn.getName() + " deu um palpite de ouro: " + guess;
+    			System.out.println(play);
+    			matchLog += play + "\n";
     			if (guess.equals(word)) {
     				score = remainingPoints;
     				remainingPoints = 0;
     			}
     		} else {
-    			String play = playerTurn.getName() + " digitou a letra: " + character.toUpperCase() + "\n";
-        		matchLog += play;
+    			String play = playerTurn.getName() + " digitou a letra: " + character.toUpperCase();
+        		matchLog += play + "\n";
         		System.out.println(play);
         		score = verifyCharacter(character);
         	
@@ -197,6 +198,8 @@ public class Match extends Thread implements MatchInterface {
     		String matchScoreWithEmail = "Placar Final:\n" + c1.getName() + "(" + c1.getEmail() + "): " + c1Score + " ponto(s)\n" + c2.getName() + "(" + c2.getEmail() + "): " + c2Score + " ponto(s)";
 
     		createLogFile(matchScoreWithEmail);
+    		c1.receiveMessage("Palavra: " + word);
+    		c2.receiveMessage("Palavra: " + word);
     		c1.receiveMessage(matchScore);
     		c2.receiveMessage(matchScore);
 

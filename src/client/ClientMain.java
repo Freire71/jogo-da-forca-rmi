@@ -12,24 +12,24 @@ public class ClientMain {
         try {
 	    	ServerInterface server =
 	            (ServerInterface) Naming.lookup ("//127.0.0.1:1099/Forca");
-//        	
-//	    	String email = "";
-//	    	String nome = "";
-//	    	
-//	    	System.out.println("Digite o seu nome: ");
-//	    	do {
-//	    		Scanner in = new Scanner(System.in);
-//	    		nome = in.nextLine();
-//	    	} while(nome.equals(""));
-//	    	
-//	    	System.out.println("Digite o seu e-mail:");
-//	    	do {
-//	    		Scanner in = new Scanner(System.in);
-//	    		email = in.nextLine();
-//	    	} while (email.equals(""));
-//	    	
-//	    	ClientInterface c =  new Client(email, nome);
-	    	ClientInterface c =  new Client("alex@gmail.com", "Alex");
+        	
+	    	String email = "";
+	    	String nome = "";
+	    	
+	    	System.out.println("Digite o seu nome: ");
+	    	do {
+	    		Scanner in = new Scanner(System.in);
+	    		nome = in.nextLine();
+	    	} while(nome.equals(""));
+	    	
+	    	System.out.println("Digite o seu e-mail:");
+	    	do {
+	    		Scanner in = new Scanner(System.in);
+	    		email = in.nextLine();
+	    	} while (email.equals(""));
+	    	
+	    	ClientInterface c =  new Client(email, nome);
+//	    	ClientInterface c =  new Client("alex@gmail.com", "Alex");
 
 	    	if(server != null) {
 	    		System.out.println("O servidor está online!");

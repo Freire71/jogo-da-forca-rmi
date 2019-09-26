@@ -1,0 +1,16 @@
+Partida de ID: A0H4G2SK
+Timestamp de inicio: 2019-09-25 22:35:50.095
+Timestamp de encerramento: 2019-09-25 22:36:30.552
+Palavra: SIGNATÁRIO
+Placar Final:
+Alex(alex@gmail.com): 6 ponto(s)
+Caio(caio@gmail.com): 4 ponto(s)
+Jogadas realizadas: 
+Alex digitou a letra: S
+Caio digitou a letra: I
+Alex digitou a letra: G
+Caio digitou a letra: N
+Alex digitou a letra: A
+Caio digitou a letra: T
+Alex deu um palpite de ouro: SIGNATÁRIO
+
