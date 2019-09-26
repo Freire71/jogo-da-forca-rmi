@@ -1,0 +1,26 @@
+Partida de ID: AH72AHUQ
+Timestamp de inicio: 2019-09-26 12:51:05.154
+Timestamp de encerramento: 2019-09-26 12:53:23.024
+Palavra: PECULIAR
+Placar Final:
+pedro(pedro@gmail.com): 5 ponto(s)
+alex(alex@gmail.com): 3 ponto(s)
+Jogadas realizadas: 
+pedro digitou a letra: A
+alex digitou a letra: P
+pedro digitou a letra: E
+alex digitou a letra: R
+pedro digitou a letra: C
+alex digitou a letra: D
+pedro digitou a letra: U
+alex digitou a letra: N
+pedro digitou a letra: T
+alex digitou a letra: E
+pedro digitou a letra: D
+alex digitou a letra: H
+pedro digitou a letra: S
+alex digitou a letra: D
+pedro digitou a letra: N
+alex digitou a letra: I
+pedro digitou a letra: L
+

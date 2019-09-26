@@ -1,0 +1,25 @@
+Partida de ID: B221RAUW
+Timestamp de inicio: 2019-09-26 13:01:22.14
+Timestamp de encerramento: 2019-09-26 13:05:17.677
+Palavra: SUSCETÍVEL
+Placar Final:
+Alex(alex@gmail.com): 3 ponto(s)
+pedro(pedro@gmail.com): 7 ponto(s)
+Jogadas realizadas: 
+Alex digitou a letra: A
+pedro digitou a letra: O
+Alex digitou a letra: P
+pedro digitou a letra: E
+Alex digitou a letra: O
+pedro digitou a letra: I
+Alex digitou a letra: U
+pedro digitou a letra: Q
+Alex digitou a letra: M
+pedro digitou a letra: C
+Alex digitou a letra: T
+pedro digitou a letra: Z
+Alex deu um palpite de ouro: SUCETÍVEL
+pedro digitou a letra: S
+Alex digitou a letra: V
+pedro deu um palpite de ouro: SUSCETÍVEL
+

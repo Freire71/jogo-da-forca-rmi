@@ -1,0 +1,16 @@
+Partida de ID: M6EPE94E
+Timestamp de inicio: 2019-09-26 12:39:13.846
+Timestamp de encerramento: 2019-09-26 12:41:32.721
+Palavra: AUTÓCTONE
+Placar Final:
+Pedro(pedro@gmail.com): 4 ponto(s)
+Alex(alex@gmail.com): 5 ponto(s)
+Jogadas realizadas: 
+Alex digitou a letra: A
+Pedro digitou a letra: O
+Alex digitou a letra: U
+Pedro digitou a letra: T
+Alex digitou a letra: C
+Pedro deu um palpite de ouro: AUTOCTONE
+Alex deu um palpite de ouro: AUTÓCTONE
+

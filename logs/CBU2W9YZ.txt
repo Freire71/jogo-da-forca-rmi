@@ -1,0 +1,17 @@
+Partida de ID: CBU2W9YZ
+Timestamp de inicio: 2019-09-26 12:44:54.539
+Timestamp de encerramento: 2019-09-26 12:46:46.028
+Palavra: PERSPICAZ
+Placar Final:
+pedro(pedro@gmail.com): 5 ponto(s)
+Alex(alex@gmail.com): 4 ponto(s)
+Jogadas realizadas: 
+Alex digitou a letra: A
+pedro digitou a letra: A
+Alex digitou a letra: C
+pedro digitou a letra: E
+Alex digitou a letra: D
+pedro digitou a letra: B
+Alex digitou a letra: P
+pedro deu um palpite de ouro: PERSPICAZ
+
