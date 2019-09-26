@@ -13,20 +13,22 @@ import java.sql.Timestamp;
 import java.text.Normalizer;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 import client.ClientInterface;
 
 public class Match extends Thread implements MatchInterface {
 	
-	private String message;
+	private boolean hasStarted = false;
     private ClientInterface c1, c2;
-    private int numberOfPlayers;
+    private String guestEmail = "";
     private String word;
     private int[] characters;
     private int remainingPoints;
     private String matchId;
     private Timestamp startTime;
     private Timestamp endTime;
+    private String matchLog = "Jogadas realizadas: \n";
     
     public Match (ClientInterface c1, ClientInterface c2, String word, String matchId){
         this.c1=c1;
@@ -35,10 +37,29 @@ public class Match extends Thread implements MatchInterface {
         this.startTime = new Timestamp(System.currentTimeMillis());
         this.matchId = matchId;
     	System.out.println("ID da partida: " + matchId);
-    	System.out.println("Palavra: " + word);
+    	System.out.println("Palavra: " + word.toUpperCase());
         setupWord();
         this.start();
     }
+    
+    public Match (ClientInterface c1, String word, String matchId){
+        this.c1=c1;
+        this.word = word.toUpperCase();
+        this.startTime = new Timestamp(System.currentTimeMillis());
+        this.matchId = matchId;
+    	System.out.println("ID da partida: " + matchId);
+    	System.out.println("Palavra: " + word);
+        setupWord();
+    }
+    
+    public void setGuestEmail(String email) {
+    	this.guestEmail = email;
+    }
+    
+    public String getGuestEmail() {
+    	return this.guestEmail;
+    }
+    
     
     public void setupWord() {
     	int[] charactersArray = new int[word.length()];
@@ -80,10 +101,28 @@ public class Match extends Thread implements MatchInterface {
     	try {
     		playerTurn.receiveMessage("É a sua vez");
     		awaitingPlayer.receiveMessage("É a vez do seu adversário jogar");
-    		
+    		int score = 0;
     		String character = playerTurn.yourTurn().toUpperCase();
-    		System.out.println(playerTurn.getName() + " digitou a letra: " + character);
-    		int score = verifyCharacter(character);
+    		if(character.substring(0,1).equals("!")) {
+    			if (playerTurn.getGuesses() == 0) {
+    				playerTurn.receiveMessage("Você não possui mais palpites de ouro!");
+    				return;
+    			}
+    			playerTurn.decreaseGuesses();
+    			String guess = character.substring(1, character.length()).toUpperCase();
+    			String play = playerTurn.getName() + " deu um palpite de ouro: " + guess + "\n";
+    			matchLog += play;
+    			if (guess.equals(word)) {
+    				score = remainingPoints;
+    				remainingPoints = 0;
+    			}
+    		} else {
+    			String play = playerTurn.getName() + " digitou a letra: " + character.toUpperCase() + "\n";
+        		matchLog += play;
+        		System.out.println(play);
+        		score = verifyCharacter(character);
+        	
+    		}
     		playerTurn.receiveMessage("Você marcou " + score + " ponto(s)");
     		
     		if(score != 0) {
@@ -99,12 +138,13 @@ public class Match extends Thread implements MatchInterface {
     }
     
     public void createLogFile(String matchScore) throws IOException{
-	    String text = "Partida de ID: " + matchId + "\nTimestamp de inicio: " + startTime + "\n" + matchScore ;
 	    endTime = new Timestamp(System.currentTimeMillis());
 	    List<String> lines = Arrays.asList("Partida de ID: " + matchId,
-	    		"Timestamp de inicio: " + startTime, "Timestamp de encerramento: " + endTime,"Palavra: " + word,  matchScore);
+	    		"Timestamp de inicio: " + startTime, "Timestamp de encerramento: " + endTime,"Palavra: " + word,  matchScore, matchLog);
+	    
 	    File file = new File("logs/" + matchId + ".txt");
 	    file.createNewFile();
+	    
 	    Path path = Paths.get("logs/" + matchId + ".txt");
 	    Files.write(path, lines, StandardCharsets.UTF_8);
     	System.out.println("Arquivo de log gravado");
@@ -114,17 +154,33 @@ public class Match extends Thread implements MatchInterface {
     public void run()
     { 
     	try {
-    		c1.receiveMessage("Seja bem-vindo " + c1.getName() + "!\n");
-			c2.receiveMessage("Seja bem-vindo" + c2.getName() + "!\n");
+    		String aboutGuesses = "Para dar um palpite de ouro comece com '!'\nAtenção! Você possui apenas 1 palpite de ouro!\n";
+    		c1.receiveMessage("Seja bem-vindo " + c1.getName() + "!\n" + aboutGuesses);
+			c2.receiveMessage("Seja bem-vindo " + c2.getName() + "!\n" + aboutGuesses);
 			c1.receiveMessage("Palavra: " + printWord());
     		c2.receiveMessage("Palavra: " + printWord());
-    		while (remainingPoints > 0) {
-    			turn(c1, c2);
-    			if (remainingPoints == 0) {
-    				break;
-    			}
-        		turn(c2, c1);	
+    		Random r = new Random();
+    		int playsFirst = r.nextInt(2);
+    		System.out.println("Começa jogando:  " + playsFirst);
+    		
+    		if (playsFirst == 0) {
+    			while (remainingPoints > 0) {
+        			turn(c1, c2);
+        			if (remainingPoints == 0) {
+        				break;
+        			}
+            		turn(c2, c1);	
+        		}
+    		} else {
+    			while (remainingPoints > 0) {
+	    			turn(c2, c1);
+	    			if (remainingPoints == 0) {
+	    				break;
+	    			}
+	        		turn(c1, c2);	
+        		}
     		}
+    		
     		int c1Score = c1.getScore();
     		int c2Score = c2.getScore();
     		if (c1Score > c2Score) {
@@ -158,7 +214,16 @@ public class Match extends Thread implements MatchInterface {
 	@Override
 	public boolean addPlayer(ClientInterface ci) throws RemoteException {
 		// TODO Auto-generated method stub
-		return false;
+		this.c2 = ci;
+		hasStarted = true;
+		start();
+		return true;
+	}
+
+	@Override
+	public boolean hasStarted() throws RemoteException {
+		// TODO Auto-generated method stub
+		return this.hasStarted;
 	}
 
 }

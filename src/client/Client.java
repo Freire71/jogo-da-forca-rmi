@@ -9,6 +9,7 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
 	private String email;
 	private String name;
 	private int score;
+	private int guesses;
 	
 	
 	public Client(String email, String name) throws RemoteException {
@@ -16,6 +17,7 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
 		this.email = email;
 		this.name = name;
 		this.score = 0;
+		this.guesses = 1;
 	}
 	
 	public String getEmail() {
@@ -30,7 +32,7 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	
 	@Override
 	public void receiveMessage(String message) throws RemoteException {
 		// TODO Auto-generated method stub
@@ -54,6 +56,18 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
 	public int getScore() throws RemoteException {
 		// TODO Auto-generated method stub
 		return this.score;
+	}
+
+	@Override
+	public void decreaseGuesses() throws RemoteException {
+		// TODO Auto-generated method stub
+		this.guesses -= 1;
+	}
+
+	@Override
+	public int getGuesses() throws RemoteException {
+		// TODO Auto-generated method stub
+		return this.guesses;
 	}
 
 

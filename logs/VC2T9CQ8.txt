@@ -1,0 +1,15 @@
+Partida de ID: VC2T9CQ8
+Timestamp de inicio: 2019-09-25 21:35:42.519
+Timestamp de encerramento: 2019-09-25 21:37:18.003
+Palavra: DESTARTE
+Placar Final:
+Alex(alex@gmail.com): 3 ponto(s)
+Caio(caio@gmail.com): 5 ponto(s)
+Jogadas realizadas: 
+Alex digitou a letra: D
+Caio digitou a letra: E
+Alex digitou a letra: S
+Caio digitou a letra: T
+Alex digitou a letra: A
+Caio digitou a letra: R
+
