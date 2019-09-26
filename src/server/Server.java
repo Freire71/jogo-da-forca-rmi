@@ -56,7 +56,7 @@ public class Server extends UnicastRemoteObject implements ServerInterface  {
 	@Override
 	public void startNewMatch(ClientInterface ci) throws RemoteException {
 		// TODO Auto-generated method stub
-        System.out.println ("Partida criada pelo o jogador: " + ci.getName());
+        System.out.println ("Partida criada pelo jogador: " + ci.getName());
         Random r = new Random();
     	int wordIndex = r.nextInt(300);
     	String matchId = randomAlphaNumeric(8); 

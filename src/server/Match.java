@@ -48,7 +48,7 @@ public class Match extends Thread implements MatchInterface {
         this.startTime = new Timestamp(System.currentTimeMillis());
         this.matchId = matchId;
     	System.out.println("ID da partida: " + matchId);
-    	System.out.println("Palavra: " + word);
+    	System.out.println("Palavra: " + word.toUpperCase());
         setupWord();
     }
     
